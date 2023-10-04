@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using code_wizards_website.Data;
+using code_wizards_website.Models;
+
 namespace code_wizards_website;
 
 public class Program
@@ -8,6 +12,11 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+
+        builder.Services.AddEntityFrameworkSqlServer()
+            .AddDbContext<CodeWizardsWebsiteDbContext>(
+                options => options.UseSqlServer(builder.Configuration.GetConnectionString("Database"))
+            );
 
         var app = builder.Build();
 

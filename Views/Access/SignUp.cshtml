@@ -1,0 +1,77 @@
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<body class="login-and-signup">
+    <header>
+        <div class="red-banner">
+            Cadastre-se agora e ganhe desconto de 10% em cursos!
+        </div>
+        <nav>
+            <div class="logo">
+                <a>
+                    <img src="~/img/code-wizards-logo.png"/>
+                </a>
+            </div>
+            <div class="address">
+                <a>Informe seu endereço</a> para saber cursos próximos a você
+            </div>
+            <a class="btn-option">
+                Ajuda <i class="ri-arrow-drop-down-line"></i>
+            </a>
+        </nav>
+    </header>
+    <main class="main-info">
+        <div class="info-box">
+            <h1>6 milhões de acesso em apenas um mês!</h1>
+            <div class="description">
+                Esse é o alcance da maior plataforma de cursos, 
+                Code Wizards! Faça parte e eleve seu conhecimento.
+            </div>
+        </div>
+        <div class="login-container">
+            <div class="login-box">
+                <div class="title">Cadastre-se no nosso site!</div>
+                <div class="content"> 
+                    <form action="#" method="POST">
+                        <div class="user-input">
+                            <label for="name-box">Nome Completo</label>
+                            <div class="input-container">
+                                <input type="text" name="name-box" placeholder="Seu nome completo" required>
+                            </div>
+                            <label for="email-box">Email</label>
+                            <div class="input-container">
+                                <input type="email" name="email-box" placeholder="email@gmail.com" required>
+                            </div>
+                            <label for="phone">Telefone</label>
+                            <div class="input-container">
+                                <input type="text" name="phone-box" placeholder="(00) 0 0000-0000" required>
+                            </div>
+                            <label for="new-password">Criar Senha</label>
+                            <div class="input-container">
+                                <input type="password" name="new-password-box" placeholder="8 a 16 caracteres" required>
+                            </div>
+                            <label for="confirm-password">Confirmar Senha</label>
+                            <div class="input-container">
+                                <input type="password" name="confirm-password-box" placeholder="" required>
+                            </div>
+                        </div>
+                        <input class="btn" type="submit" name="submit-btn" value="Entrar">
+                    </form>
+                    <div class="signup-banner" style="text-align: left;">
+                        Já possui conta? <a href="/login.html">Entrar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="divisor">
+                <div class="line"></div>
+                <div class="text">Ou</div>
+                <div class="line"></div>
+            </div>
+            <button class="google-btn">
+                <img src="~/img/google-g-logo.png"/>
+                <b>Continuar com o Google</b>
+            </button>
+        </div>
+    </main>
+</body>

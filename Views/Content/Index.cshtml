@@ -1,0 +1,90 @@
+@{
+    Layout = "~/Views/Shared/_Internal.cshtml";
+    ViewData["Title"] = "O seu Futuro está aqui";
+}
+
+<body id="index-page">
+    <header>
+        <nav style="border-bottom: 5px solid #000; display: flex; justify-content: space-between;">
+            <div class="container">
+                <div class="gap-spacer" style="max-width: 250px; margin-right: 50px;"></div>
+                <div class="logo">
+                    <a>
+                        <img src="~/img/code-wizards-logo.png"/>
+                    </a>
+                </div>
+                <ul>
+                    <li>
+                        <a>Cursos <i class="ri-arrow-drop-down-line"></i></a>
+                    </li>
+                    <li>
+                        <a>Meus Cursos <i class="ri-arrow-drop-down-line"></i></a>
+                    </li>
+                    <li>
+                        <a>Unidades e Parcerias <i class="ri-arrow-drop-down-line"></i></a>
+                    </li>
+                    <li>
+                        <a>Cursos <i class="ri-arrow-drop-down-line"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="login-nav-area">
+                <div class="search-area">
+                    <div class="input-container" style="display: flex; gap: 5px;">
+                        <i class="ri-search-line"></i>
+                        <input type="text" name="search-box" placeholder="Pesquise aqui">
+                    </div>
+                </div>
+                <div class="triangle"></div>
+                <div class="rectangle">
+                    <a class="btn-option">Olá @ViewBag.UserName!</a>
+                    <a class="btn" asp-area="" asp-controller="Content" asp-action="LogOut">Sair</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="note-flt-button"><i class="ri-sticky-note-line"></i></div>
+        <div class="note-interface">
+            <div class="note-menu">
+                <button class="operation"><i class="ri-add-line"></i></button>
+            </div>
+            <div class="note-list">
+                <div class="note">
+                    <div class="note-header">
+                        <h4 class="note-title">Título da Nota</h4>
+                        <div class="operations">
+                            <div class="operation"><i class="ri-edit-box-line"></i></div>
+                            <div class="operation"><i class="ri-delete-bin-line"></i></div>
+                        </div>
+                    </div>
+                    <div class="note-body">dasdas</div>
+                </div>
+                <div class="note"></div>
+                <div class="note"></div>
+                <div class="note"></div>
+                <div class="note"></div>
+                <div class="note"></div>
+            </div>
+        </div>
+        <div class="new-note">
+            <textarea name="title" cols="19" rows="1" maxlength="255" placeholder="Seu título"></textarea>
+            <textarea name="description" cols="29" rows="10" maxlength="1000" placeholder="Escreva aqui..."></textarea>
+            <button class="note-btn" style="background-color: #9c9c9c">Confirmar</button>
+            <button class="note-btn" style="background-color: #da1818">Cancelar</button>
+        </div>
+        <div class="text-box">
+            <h1>
+                Prepare-se para o futuro, faça diversos cursos de 
+                sua preferência! São mais de 1 milhão de acessos por
+                mês! Complete cursos com os melhores professores e 
+                equipamentos profissionais!
+            </h1>
+            <h1>
+                Preços que cabem no seu bolso!
+            </h1>
+            <p>Se preparar para a vida é viver sem se preocupar</p>
+        </div>
+        <a class="btn-white" style="position: absolute; bottom: 0; margin: 0px 0px 20px 20px;">Suporte</a>
+    </main>
+</body>

@@ -1,0 +1,72 @@
+@model  code_wizards_website.Models.AccountViewModel;
+
+@{
+    ViewData["Title"] = "Entrar";
+}
+
+<body class="login-and-signup">
+    <header>
+        <div class="red-banner">
+            Cadastre-se agora e ganhe desconto de 10% em cursos!
+        </div>
+        <nav>
+            <div class="logo">
+                <a>
+                    <img src="~/img/code-wizards-logo.png"/>
+                </a>
+            </div>
+            <div class="address">
+                <a>Informe seu endereço</a> para saber cursos próximos a você
+            </div>
+            <a class="btn-option">
+                Ajuda <i class="ri-arrow-drop-down-line"></i>
+            </a>
+        </nav>
+    </header>
+    <main class="main-info">
+    <div class="info-box">
+        <h1>6 milhões de acesso em apenas um mês!</h1>
+        <div class="description">
+            Esse é o alcance da maior plataforma de cursos, 
+            Code Wizards! Faça parte e eleve seu conhecimento.
+        </div>
+    </div>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="title">Entre no nosso site!</div>
+            <div class="content">
+                <form asp-controller="Access" asp-action="Login" method="post">
+                    <div class="user-input">
+                        <label asp-for="Email" for="Email">Email</label>
+                        <div class="input-container">
+                                <input asp-for="Email" type="email" name="Email" placeholder="email@gmail.com" required>
+                        </div>
+                            <label asp-for="Password" for="Password">Senha</label>
+                        <div class="input-container">
+                            <input asp-for="Password" type="password" name="Password" placeholder="Digite aqui..." required>
+                        </div>
+                    </div>
+                    <input class="btn" type="submit" name="submit-btn" value="Entrar">
+
+                    @if(ViewData["ValidateMessage"] != null)
+                    {
+                        <div style="background-color: #520000; color: #ffffff; padding: 10px;">@ViewData["ValidateMessage"]</div>
+                    }
+                </form>
+                <div class="signup-banner">
+                    Não possui conta? <a>Cadastre-se</a>
+                </div>
+            </div>
+        </div>
+        <div class="divisor">
+            <div class="line"></div>
+            <div class="text">Ou</div>
+            <div class="line"></div>
+        </div>
+        <button class="google-btn">
+            <img src="~/img/google-g-logo.png"/>
+            <b>Continuar com o Google</b>
+        </button>
+    </div>
+</main>
+</body>

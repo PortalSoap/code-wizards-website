@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using code_wizards_website.Data;
 using code_wizards_website.Models;
@@ -12,6 +13,14 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+
+        builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(
+                option => {
+                    option.LoginPath = "/Access/Login";
+                    option.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                }
+            );
 
         builder.Services.AddEntityFrameworkSqlServer()
             .AddDbContext<CodeWizardsWebsiteDbContext>(
@@ -33,11 +42,13 @@ public class Program
 
         app.UseRouting();
 
+        app.UseAuthentication();
+
         app.UseAuthorization();
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Home}/{action=Index}/{id?}");
+            pattern: "{controller=Access}/{action=Login}/{id?}");
 
         app.Run();
     }

@@ -33,27 +33,28 @@
             <div class="login-box">
                 <div class="title">Cadastre-se no nosso site!</div>
                 <div class="content"> 
-                    <form action="#" method="POST">
+                    <form asp-controller="Access" asp-action="SignUp" method="post">
                         <div class="user-input">
-                            <label for="name-box">Nome Completo</label>
+                            <label for="name">Nome Completo</label>
                             <div class="input-container">
-                                <input type="text" name="name-box" placeholder="Seu nome completo" required>
+                                <input type="text" name="name" placeholder="Seu nome completo" required>
                             </div>
-                            <label for="email-box">Email</label>
+                            <label for="email">Email</label>
                             <div class="input-container">
-                                <input type="email" name="email-box" placeholder="email@gmail.com" required>
+                                <input type="email" name="email" placeholder="email@gmail.com" required>
                             </div>
                             <label for="phone">Telefone</label>
                             <div class="input-container">
-                                <input type="text" name="phone-box" placeholder="(00) 0 0000-0000" required>
+                                <input type="text" name="phone" placeholder="(00) 0 0000-0000">
                             </div>
-                            <label for="new-password">Criar Senha</label>
+                            <div style="color:#540000">@ViewData["PasswordsNotMatching"]</div>
+                            <label for="password">Criar Senha</label>
                             <div class="input-container">
-                                <input type="password" name="new-password-box" placeholder="8 a 16 caracteres" required>
+                                <input type="password" name="password" placeholder="8 a 16 caracteres" required>
                             </div>
-                            <label for="confirm-password">Confirmar Senha</label>
+                            <label for="passwordSpell">Confirmar Senha</label>
                             <div class="input-container">
-                                <input type="password" name="confirm-password-box" placeholder="" required>
+                                <input type="password" name="passwordSpell" placeholder="" required>
                             </div>
                         </div>
                         <input class="btn" type="submit" name="submit-btn" value="Entrar">

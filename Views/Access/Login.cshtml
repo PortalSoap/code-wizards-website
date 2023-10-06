@@ -52,6 +52,10 @@
                     {
                         <div style="background-color: #cf5353; color: #ffffff; padding: 10px; margin-bottom: 10px">@ViewData["ValidateMessage"]</div>
                     }
+                    @if(ViewData["SuccessfulSignUp"] != null)
+                    {
+                        <div style="background-color: #9c9c9c; color: #ffffff; padding: 10px; margin-bottom: 10px">@ViewData["SuccessfulSignUp"]</div>
+                    }
                 </form>
                 <div class="signup-banner">
                     Não possui conta? <a asp-controller="Access" asp-action="SignUp">Cadastre-se</a>

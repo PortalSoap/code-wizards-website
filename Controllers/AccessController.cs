@@ -63,5 +63,32 @@ namespace code_wizards_website.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> SignUp(string name, string email, string password, string passwordSpell)
+        {
+            if(name != null && email != null && password != null  && passwordSpell != null)
+            {
+                if(password != passwordSpell)
+                {
+                    ViewData["PasswordsNotMatching"] = "As senhas não conferem.";
+                    return View();
+                }
+
+                await _dbContext.Accounts.AddAsync(
+                    new AccountViewModel
+                    {
+                        Name = name,
+                        Email = email,
+                        Password = password
+                    }  
+                );
+                await _dbContext.SaveChangesAsync();
+                ViewData["SuccessfulSignUp"] = "Cadastro realizado com sucesso!";
+
+                return RedirectToAction("Login", "Access");
+            }
+            return View();
+        }
     }
 }

@@ -55,7 +55,7 @@ namespace code_wizards_website.Controllers
                 return RedirectToAction("Index", "Content");
             }
 
-            ViewData["ValidateMessage"] = "Usuário não encontrado";
+            ViewData["ValidateMessage"] = "Email e/ou senha incorreto(s)";
             return View();
         }
 

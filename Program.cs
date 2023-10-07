@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.EntityFrameworkCore;
 using code_wizards_website.Data;
 using code_wizards_website.Models;
@@ -19,6 +20,12 @@ public class Program
                 option => {
                     option.LoginPath = "/Access/Login";
                     option.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                }
+            )
+            .AddGoogle(
+                googleOptions => {
+                    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+                    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
                 }
             );
 

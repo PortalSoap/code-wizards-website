@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using code_wizards_website.Models;
 using code_wizards_website.Data;
+using Microsoft.AspNetCore.Authentication.Google;
 
 namespace code_wizards_website.Controllers
 {
@@ -89,6 +90,16 @@ namespace code_wizards_website.Controllers
                 return RedirectToAction("Login", "Access");
             }
             return View();
+        }
+
+        public async Task GoogleAuthentication()
+        {
+            await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme,
+                new AuthenticationProperties()
+                {
+                    RedirectUri = Url.Action("Login", "Access")
+                }
+            );
         }
     }
 }

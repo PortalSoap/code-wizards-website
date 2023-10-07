@@ -7,6 +7,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css"/>
     <link rel="stylesheet" href="~/css/style.css">
 </head>
+<div class="note-flt-button"><i class="ri-sticky-note-line"></i></div>
+        <div class="note-interface">
+            <div class="note-menu">
+                <button class="operation"><i class="ri-add-line"></i></button>
+            </div>
+            <div class="note-list">
+                <div class="note">
+                    <div class="note-header">
+                        <h4 class="note-title">Título da Nota</h4>
+                        <div class="operations">
+                            <div class="operation"><i class="ri-edit-box-line"></i></div>
+                            <div class="operation"><i class="ri-delete-bin-line"></i></div>
+                        </div>
+                    </div>
+                    <div class="note-body">dsadsdsdsddsdddddddddddddddddddddddddddd</div>
+                </div>
+                <div class="note"></div>
+                <div class="note"></div>
+                <div class="note"></div>
+                <div class="note"></div>
+                <div class="note"></div>
+            </div>
+        </div>
+        <div class="new-note">
+            <textarea name="title" cols="19" rows="1" maxlength="255" placeholder="Seu título"></textarea>
+            <textarea name="description" cols="29" rows="10" maxlength="1000" placeholder="Escreva aqui..."></textarea>
+            <button class="note-btn" style="background-color: #9c9c9c">Confirmar</button>
+            <button class="note-btn" style="background-color: #da1818">Cancelar</button>
+        </div>
 @RenderBody()
 @await RenderSectionAsync("Scripts", required: false)
 </html>

@@ -193,6 +193,7 @@ input {
 }
 
 .google-btn {
+    font-size: 0.9rem;
     width: 220px;
     height: 40px;
     padding: 10px;

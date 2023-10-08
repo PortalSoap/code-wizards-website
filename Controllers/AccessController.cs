@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using code_wizards_website.Models;
 using code_wizards_website.Data;
-using Microsoft.AspNetCore.Authentication.Google;
+using code_wizards_website.Services;
 
 namespace code_wizards_website.Controllers
 {
@@ -39,7 +40,8 @@ namespace code_wizards_website.Controllers
             {
                 List<Claim> claims = new List<Claim>() {
                     new Claim(ClaimTypes.NameIdentifier, target.Email),
-                    new Claim(ClaimTypes.Name, target.Name)
+                    new Claim(ClaimTypes.Name, target.Name),
+                    new Claim(ClaimTypes.Email, target.Email)
                 };
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, 
@@ -82,9 +84,15 @@ namespace code_wizards_website.Controllers
                         Name = name,
                         Email = email,
                         Password = password
-                    }  
+                    }
                 );
                 await _dbContext.SaveChangesAsync();
+
+                await NotesAPIService.AddUserAsync(new UserModel{
+                    Name = name,
+                    Email = email
+                });
+
                 ViewData["SuccessfulSignUp"] = "Cadastro realizado com sucesso!";
 
                 return RedirectToAction("Login", "Access");

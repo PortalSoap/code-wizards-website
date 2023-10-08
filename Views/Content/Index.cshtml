@@ -4,18 +4,24 @@
 }
 
 <body id="index-page">
+    <div id="dialog-background" style="display: none;"></div>
+    <dialog id="main-slideshow" class="slideshow">
+        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTCK_NiYQvKddL0PJoDDjiOSur3X-cB3A9jn99KpfG-rUyQycUeg4hjdtnWEIBB7cNB9xnaV_stfd37/embed?start=false&loop=false&delayms=3000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        <a href="https://docs.google.com/presentation/d/1NFs7Mal5GsjWa4Xx3Nu0j9ACfTCaR2j6MN21mwO-1sE/edit?usp=sharing" target="_blank" class="btn">Visualizar externamente</a>
+        <button onclick="closeSlides()" class="btn-option" style="background-color: inherit; border: none; font-size: inherit;">Fechar apresentação</button>
+    </dialog>
     <header>
         <nav style="border-bottom: 5px solid #000; display: flex; justify-content: space-between;">
             <div class="container">
                 <div class="gap-spacer" style="max-width: 250px; margin-right: 50px;"></div>
                 <div class="logo">
-                    <a>
+                    <a asp-controller ="Content" asp-action="Index">
                         <img src="~/img/code-wizards-logo.png"/>
                     </a>
                 </div>
                 <ul>
                     <li>
-                        <a>Cursos <i class="ri-arrow-drop-down-line"></i></a>
+                        <a asp-controller ="Content" asp-action="Courses">Cursos <i class="ri-arrow-drop-down-line"></i></a>
                     </li>
                     <li>
                         <a>Meus Cursos <i class="ri-arrow-drop-down-line"></i></a>
@@ -23,10 +29,11 @@
                     <li>
                         <a>Unidades e Parcerias <i class="ri-arrow-drop-down-line"></i></a>
                     </li>
-                    <li>
-                        <a>Cursos <i class="ri-arrow-drop-down-line"></i></a>
-                    </li>
                 </ul>
+            </div>
+            <div class="academic-content">
+                <button><i class="ri-book-read-line"></i></button>
+                <button onclick="showSlides()"><i class="ri-slideshow-3-line"></i></button>
             </div>
             <div class="login-nav-area">
                 <div class="search-area">
@@ -44,7 +51,6 @@
         </nav>
     </header>
     <main>
-        
         <div class="text-box">
             <h1>
                 Prepare-se para o futuro, faça diversos cursos de 
@@ -59,4 +65,5 @@
         </div>
         <a class="btn-white" style="position: absolute; bottom: 0; margin: 0px 0px 20px 20px;">Suporte</a>
     </main>
+    <script src="~/js/script.js"></script>
 </body>

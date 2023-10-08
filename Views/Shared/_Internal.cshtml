@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims;
+@using code_wizards_website.Models;
+@using code_wizards_website.Services;
+@model code_wizards_website.Models.NoteModel;
+
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8" />
@@ -7,35 +12,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css"/>
     <link rel="stylesheet" href="~/css/style.css">
 </head>
-<div class="note-flt-button"><i class="ri-sticky-note-line"></i></div>
-        <div class="note-interface">
-            <div class="note-menu">
-                <button class="operation"><i class="ri-add-line"></i></button>
-            </div>
-            <div class="note-list">
-                <div class="note">
-                    <div class="note-header">
-                        <h4 class="note-title">Título da Nota</h4>
-                        <div class="operations">
-                            <div class="operation"><i class="ri-edit-box-line"></i></div>
-                            <div class="operation"><i class="ri-delete-bin-line"></i></div>
+<button id="note-flt-button" onclick="showNotesInterface()"><i class="ri-sticky-note-line"></i></button>
+<div id="note-interface" style="display: none">
+    <div class="note-menu">
+        <button class="operation" onclick="showNewNoteInterface()"><i class="ri-add-line"></i></button>
+    </div>
+    <div class="note-list">
+        
+        @{
+            if(User.Identity.IsAuthenticated)
+            {
+                
+                List<NoteModel> notes = await NotesAPIService.NotesFromEmailAsync(User.FindFirst(ClaimTypes.Email).Value);
+                
+                foreach(NoteModel note in notes)
+                {
+                    <div class="note" valueA="@note.Id" valueB="@note.UserId">
+                        <div class="note-header">
+                            <h4 class="note-title">@note.Title</h4>
+                            <div class="operations" valueA="@note.Id" valueB="@note.UserId">
+                                <button onclick="openUpdateNoteInterface(this)" class="operation"><i class="ri-edit-box-line"></i></button>
+                                <button class="operation"><i class="ri-delete-bin-line"></i></button>
+                            </div>
                         </div>
+                        <div class="note-body">@note.Description</div>
                     </div>
-                    <div class="note-body">dsadsdsdsddsdddddddddddddddddddddddddddd</div>
-                </div>
-                <div class="note"></div>
-                <div class="note"></div>
-                <div class="note"></div>
-                <div class="note"></div>
-                <div class="note"></div>
-            </div>
+                }
+            }
+        }
+    </div>
+</div>
+<div id="new-note" style="display: none">
+    <form asp-controller="NotesSystem" asp-action="CreateNote" method="post">
+        <div class="note-info">
+            <textarea asp-for="Title" name="Title" cols="19" rows="1" maxlength="255" placeholder="Seu título">dsads</textarea>
+            <textarea asp-for="Description" name="Description" cols="25" rows="10" maxlength="1000" placeholder="Escreva aqui..."></textarea>
+            <input type="text" value="" style="display: none"/>
+            <input type="text" value="" style="display: none"/>
         </div>
-        <div class="new-note">
-            <textarea name="title" cols="19" rows="1" maxlength="255" placeholder="Seu título"></textarea>
-            <textarea name="description" cols="29" rows="10" maxlength="1000" placeholder="Escreva aqui..."></textarea>
-            <button class="note-btn" style="background-color: #9c9c9c">Confirmar</button>
-            <button class="note-btn" style="background-color: #da1818">Cancelar</button>
-        </div>
+        <button asp-controller="NotesSystem" asp-action="CreateNote" class="note-btn" style="background-color: #9c9c9c">Confirmar</button>
+        <button onclick="clearNewNoteInfo()" class="note-btn" type="button" style="background-color: #da1818">Cancelar</button>
+    </form>
+</div>
 @RenderBody()
-@await RenderSectionAsync("Scripts", required: false)
+<script src="~/js/script.js"></script>
 </html>

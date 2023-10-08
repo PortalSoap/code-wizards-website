@@ -20,6 +20,17 @@ namespace code_wizards_website.Controllers
             return View();
         }
 
+        public IActionResult Courses()
+        {
+            ViewBag.UserName = "Desconhecido";
+            var nameClaim = User.FindFirst(ClaimTypes.Name);
+            if (nameClaim != null)
+            {
+                ViewBag.UserName = nameClaim.Value;
+            }
+            return View();
+        }
+
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

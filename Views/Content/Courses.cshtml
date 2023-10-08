@@ -1,0 +1,89 @@
+﻿@{
+    Layout = "~/Views/Shared/_Internal.cshtml";
+    ViewData["Title"] = "Cursos";
+}
+
+<body>
+    <div id="dialog-background" style="display: none;"></div>
+    <dialog id="main-slideshow" class="slideshow">
+        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTCK_NiYQvKddL0PJoDDjiOSur3X-cB3A9jn99KpfG-rUyQycUeg4hjdtnWEIBB7cNB9xnaV_stfd37/embed?start=false&loop=false&delayms=3000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        <a href="https://docs.google.com/presentation/d/1NFs7Mal5GsjWa4Xx3Nu0j9ACfTCaR2j6MN21mwO-1sE/edit?usp=sharing" target="_blank" class="btn">Visualizar externamente</a>
+        <button onclick="closeSlides()" class="btn-option" style="background-color: inherit; border: none; font-size: inherit;">Fechar apresentação</button>
+    </dialog>
+    <header>
+        <nav style="border-bottom: 5px solid #000; display: flex; justify-content: space-between;">
+            <div class="container">
+                <div class="gap-spacer" style="max-width: 250px; margin-right: 50px;"></div>
+                <div class="logo">
+                    <a asp-controller="Content" asp-action="Index">
+                        <img src="~/img/code-wizards-logo.png" />
+                    </a>
+                </div>
+                <ul>
+                    <li>
+                        <a asp-controller="Content" asp-action="Courses">Cursos <i class="ri-arrow-drop-down-line"></i></a>
+                    </li>
+                    <li>
+                        <a>Meus Cursos <i class="ri-arrow-drop-down-line"></i></a>
+                    </li>
+                    <li>
+                        <a>Unidades e Parcerias <i class="ri-arrow-drop-down-line"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="academic-content">
+                <button><i class="ri-book-read-line"></i></button>
+                <button onclick="showSlides()"><i class="ri-slideshow-3-line"></i></button>
+            </div>
+            <div class="login-nav-area">
+                <div class="search-area">
+                    <div class="input-container" style="display: flex; gap: 5px;">
+                        <i class="ri-search-line"></i>
+                        <input type="text" name="search-box" placeholder="Pesquise aqui">
+                    </div>
+                </div>
+                <div class="triangle"></div>
+                <div class="rectangle">
+                    <a class="btn-option">Olá @ViewBag.UserName!</a>
+                    <a class="btn" asp-controller="Content" asp-action="LogOut">Sair</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="começo">
+        <div class="search"> <img src="~/img/lupa.png"></div>
+        <div class="pesquisar"><button>Pesquisar</button></div>
+        <div class="pontos">...</div>
+    </section>
+    <main>
+        <section class="cursos">
+            <section class="cursos">
+                <div class="img">
+                    <img src="~/img/1.png" alt="">
+                    <div class="texto">Texto da Imagem 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi modi adipisci quam praesentium sit aliquid. Tempore modi animi placeat asperiores, nihil magni. Nulla quod, molestiae cum deserunt quo autem culpa.</div>
+                </div>
+                <div class="img">
+                    <img src="~/img/2.png" alt="">
+                    <div class="texto">Texto da Imagem 2 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis eos dolorem, aspernatur nesciunt sed quas. Id iure quis voluptas quidem perferendis repellendus sequi nostrum consequatur inventore, aspernatur odit molestias ipsam.</div>
+                </div>
+                <div class="img">
+                    <img src="~/img/3.png" alt="">
+                    <div class="texto">Texto da Imagem 3 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat itaque corporis reiciendis praesentium aspernatur ut, sequi sapiente ratione blanditiis aliquid dignissimos amet rerum, earum, esse possimus! Alias iusto quidem obcaecati.</div>
+                </div>
+                <div class="img">
+                    <img src="~/img/4.png" alt="">
+                    <div class="texto">Texto da Imagem 4 Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, tempora reprehenderit nisi quasi illum similique eius quos labore quidem consequatur. Ad optio illo minus eos voluptas placeat nobis in. In!</div>
+                </div>
+                <div class="img">
+                    <img src="~/img/5.png" alt="">
+                    <div class="texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore asperiores eos similique labore? Sint voluptas vitae, distinctio beatae recusandae ratione. Corrupti, possimus illum. Eos ab culpa incidunt! Vitae, odio possimus?</div>
+                </div>
+                <div class="img">
+                    <img src="~/img/6.png" alt="">
+                    <div class="texto">Texto da Imagem 6 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, dolorum alias magnam architecto dolores libero ut accusantium tempora nobis neque consequatur animi! Placeat aliquid quia assumenda quis quibusdam voluptates necessitatibus!</div>
+                </div>
+            </section>
+        </section>
+    </main>
+    <script src="~/js/script.js"></script>
+</body>
